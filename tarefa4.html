@@ -1,0 +1,29 @@
+<form method='POST' action='#'>
+    <label>Usuario:</label>
+    <input type='text' id='usuario' name='usuario'>
+    <br clear='all'>
+    <label>Senha:</label>
+    <input type='text' id='senha' name='senha'>
+    <br clear='all'>
+    <button type='button' onclick='validar()'>Enviar</button>
+</form>
+  
+<script>
+  function validar() {
+    // pegando o valor do nome pelos names
+    var usuario = document.getElementById("usuario");
+    var senha = document.getElementById("senha");
+  
+    if (usuario.value == "") {
+      alert("Usuario não informado");
+      usuario.focus();
+      return;
+    }
+    if (senha.value == "") {
+      alert("Senha não informado");
+      senha.focus();
+      return;
+    }
+    alert("Formulário enviado!");
+  }
+  </script>
