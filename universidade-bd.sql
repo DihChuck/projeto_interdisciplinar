@@ -1,0 +1,46 @@
+CREATE TABLE `ALUNO`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NULL,
+  `endereco` varchar(255) NULL,
+  `cpf` varchar(255) NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `CARGA_HORARIA`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `CURSO`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NULL,
+  `id_professor` int NULL,
+  `data_cadastro` timestamp(255) NULL DEFAULT CURRENT_DATETIME,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `MATRICULA`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_aluno` int NULL,
+  `id_curso` int NULL,
+  `id_professor` int NULL,
+  `data_cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `PROFESSOR`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NULL,
+  `cpf` varchar(255) NULL,
+  `salario` float(11, 2) NULL,
+  `carga_horaria` int NULL,
+  PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `CURSO` ADD CONSTRAINT `porofessor` FOREIGN KEY (`id_professor`) REFERENCES `PROFESSOR` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `MATRICULA` ADD CONSTRAINT `aluno` FOREIGN KEY (`id_aluno`) REFERENCES `ALUNO` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `MATRICULA` ADD CONSTRAINT `professor` FOREIGN KEY (`id_professor`) REFERENCES `PROFESSOR` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `MATRICULA` ADD CONSTRAINT `curso` FOREIGN KEY (`id_curso`) REFERENCES `CURSO` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `PROFESSOR` ADD CONSTRAINT `carga_horaria` FOREIGN KEY (`carga_horaria`) REFERENCES `CARGA_HORARIA` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
