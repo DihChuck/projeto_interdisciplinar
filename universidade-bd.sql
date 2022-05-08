@@ -16,7 +16,6 @@ CREATE TABLE `CURSO`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NULL,
   `id_professor` int NULL,
-  `data_cadastro` timestamp(255) NULL DEFAULT CURRENT_DATETIME,
   PRIMARY KEY (`id`)
 );
 
@@ -25,7 +24,6 @@ CREATE TABLE `MATRICULA`  (
   `id_aluno` int NULL,
   `id_curso` int NULL,
   `id_professor` int NULL,
-  `data_cadastro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
